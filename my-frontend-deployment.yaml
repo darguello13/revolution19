@@ -17,10 +17,6 @@ spec:
         - name: F5DEMO_BACKEND_URL
           value: "http://my-backend/"
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
         name: my-frontend
         - containerPort: 80
           protocol: TCP
