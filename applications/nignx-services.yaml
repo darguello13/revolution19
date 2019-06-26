@@ -1,17 +1,18 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: revolution-blog-frontend
+  name: nginx-ingress
   namespace: default
   labels:
-    cis.f5.com/as3-tenant: "Revolution"
-    cis.f5.com/as3-app: "blog"
-    cis.f5.com/as3-pool: "web_pool"
+    cis.f5.com/as3-tenant: AS3
+    cis.f5.com/as3-app: MyApps
+    cis.f5.com/as3-pool: ingress_pool
 spec:
   type: NodePort
-  selector:
-    app: web-service
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: nginx
